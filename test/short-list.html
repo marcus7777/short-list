@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <title>short-list</title>
+    <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../test-fixture/test-fixture-mocha.js"></script>
+    <script src="../../iron-test-helpers/mock-interactions.js"></script>
+    <link rel="import" href="../../polymer/polymer.html">
+    <link rel="import" href="../../test-fixture/test-fixture.html">
+    <link rel="import" href="../short-list.html">
+  </head>
+  <body>
+    <test-fixture id="shortList">
+      <template>
+        <short-list></short-list> //add attributes
+      </template>
+    </test-fixture>
+    <script>
+      suite('<short-list>', function () {
+        var shortList;
+        setup(function () {
+          shortList = fixture('shortList');
+        });
+        teardown(function () {
+          //...
+        });
+        suite('basic usage', function () {
+          test('can be triggered with space', function(done) {
+            shortList.addEventListener('keydown', function() {
+              done()
+            })
+            MockInteractions.pressSpace(shortList)
+          })
+          test('can be clicked', function(done) {
+            shortList.addEventListener('click', function() {
+              done()
+            })
+            MockInteractions.tap(shortList)
+          })
+        })
+      })
+    </script>
+  </body>
+</html>
