@@ -1,0 +1,20 @@
+<link rel="import" href="../paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../pair-production/input-save.html">
+<!--
+`<short-list></short-list>` 
+@demo demo.html
+-->
+
+<dom-module id="short-list">
+  <template>
+    <style>:host {display:inline-block}</style>
+    <input-save style="display:inline-block" path="shortList" label="short list" value="{{_shortList}}" pattern="[a-zA-Z\/-]*[a-zA-Z\/\,-]*[a-zA-Z\/-]+" auto-validate  error-message="sorry a ',' separated list"></input-save>
+    <paper-toggle-button style="display:inline-block"></paper-toggle-button>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: "short-list"
+  });
+</script>

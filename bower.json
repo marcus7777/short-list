@@ -1,0 +1,15 @@
+{
+  "name": "short-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "short-list.html",
+  "keywords": [
+    "polymer",
+    "web-components"
+  ],
+  "dependencies": {
+    "pair-production": "marcus7777/pair-production#803824fd7e",
+    "polymer": "*",
+    "paper-toggle-button": "PolymerElements/paper-toggle-button#~1.1.1"
+  }
+}
