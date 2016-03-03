@@ -23,7 +23,7 @@
       list: {notify:true,computed: "getList(_shortList)"}
     },
     getOutput: function(list, data, used, listBy) {
-      if (!used || !shortList) {
+      if (!used) {
         return data
       } else {
         var output = []
