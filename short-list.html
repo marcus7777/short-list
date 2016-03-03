@@ -1,20 +1,39 @@
 <link rel="import" href="../paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="../iron-localstorage/iron-localstorage.html">
+<link rel="import" href="../paper-input/paper-textarea.html">
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../pair-production/input-save.html">
 <!--
-`<short-list></short-list>` 
+`<short-list data="{{objectToArray(data)}}" output="{{shortlisted}}" list-by="name"></short-list>` 
 @demo demo.html
 -->
 
 <dom-module id="short-list">
   <template>
     <style>:host {display:inline-block}</style>
-    <input-save style="display:inline-block" path="shortList" label="short list" value="{{_shortList}}" pattern="[a-zA-Z\/-]*[a-zA-Z\/\,-]*[a-zA-Z\/-]+" auto-validate  error-message="sorry a ',' separated list"></input-save>
-    <paper-toggle-button style="display:inline-block"></paper-toggle-button>
+    <paper-textarea style="display:inline-block" path="shortList" label="short list" value="{{_shortList}}" pattern="[a-zA-Z\/-]*[a-zA-Z\/\,-]*[a-zA-Z\/-]+" auto-validate  error-message="sorry a ',' separated list"></paper-textarea>
+    <iron-localstorage name="shortList" value="{{_shortList}}" ></iron-localstorage>
+    <paper-toggle-button checked="{{used}}" style="display:inline-block"></paper-toggle-button>
   </template>
 </dom-module>
 <script>
   Polymer({
-    is: "short-list"
+    is: "short-list",
+    properties: {
+      output: {computed: "getOutput(_shortList, data, used, listBy)"}
+    },
+    getOutput: function(shortList, data, used, listBy) {
+      if (!used || !shortList) {
+        return data
+      } else {
+        var output = []
+        var shortListArray = shortList.split(",")
+
+        for (var n = 0; n < data.length; ++n) {
+          if (shortListArray.indexOf(data[n][listBy]) !== -1) {
+            output.push(data[n]) 
+          }
+        }
+      }
+    }
   });
 </script>

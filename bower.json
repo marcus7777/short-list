@@ -8,8 +8,9 @@
     "web-components"
   ],
   "dependencies": {
-    "pair-production": "marcus7777/pair-production#803824fd7e",
     "polymer": "*",
+    "paper-input": "PolymerElements/paper-input#96efaa0f70",
+    "iron-localstorage": "PolymerElements/iron-localstorage#~1.0.5",
     "paper-toggle-button": "PolymerElements/paper-toggle-button#~1.1.1"
   }
 }
