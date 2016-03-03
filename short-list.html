@@ -9,7 +9,7 @@
 
 <dom-module id="short-list">
   <template>
-    <style>:host {display:inline-block}</style>
+    <style>:host {display:block}</style>
     <paper-textarea label="short list" value="{{_shortList}}" pattern="[a-zA-Z\/-]*[a-zA-Z\/\,-]*[a-zA-Z\/-]+" auto-validate  error-message="sorry a ',' separated list"></paper-textarea>
     <iron-localstorage name="shortList" value="{{_shortList}}" ></iron-localstorage>
     <paper-toggle-button checked="{{used}}" style="display:inline-block"></paper-toggle-button>
@@ -19,7 +19,8 @@
   Polymer({
     is: "short-list",
     properties: {
-      output: {notify:true,computed: "getOutput(_shortList, data, used, listBy)"}
+      output: {notify:true,computed: "getOutput(list, data, used, listBy)"}
+      list: {notify:true,computed: "getList(_shortList)"}
     },
     getOutput: function(shortList, data, used, listBy) {
       if (!used || !shortList) {
@@ -35,6 +36,9 @@
         }
         return output
       }
+    },
+    getList: function() {
+      shortList.split(",")
     }
   });
 </script>
