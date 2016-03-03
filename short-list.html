@@ -19,7 +19,7 @@
   Polymer({
     is: "short-list",
     properties: {
-      output: {computed: "getOutput(_shortList, data, used, listBy)"}
+      output: {notify:true,computed: "getOutput(_shortList, data, used, listBy)"}
     },
     getOutput: function(shortList, data, used, listBy) {
       if (!used || !shortList) {
