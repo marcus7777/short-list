@@ -10,7 +10,7 @@
 <dom-module id="short-list">
   <template>
     <style>:host {display:inline-block}</style>
-    <paper-textarea style="display:inline-block" path="shortList" label="short list" value="{{_shortList}}" pattern="[a-zA-Z\/-]*[a-zA-Z\/\,-]*[a-zA-Z\/-]+" auto-validate  error-message="sorry a ',' separated list"></paper-textarea>
+    <paper-textarea label="short list" value="{{_shortList}}" pattern="[a-zA-Z\/-]*[a-zA-Z\/\,-]*[a-zA-Z\/-]+" auto-validate  error-message="sorry a ',' separated list"></paper-textarea>
     <iron-localstorage name="shortList" value="{{_shortList}}" ></iron-localstorage>
     <paper-toggle-button checked="{{used}}" style="display:inline-block"></paper-toggle-button>
   </template>
@@ -33,6 +33,7 @@
             output.push(data[n]) 
           }
         }
+        return output
       }
     }
   });
