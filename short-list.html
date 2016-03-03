@@ -19,18 +19,17 @@
   Polymer({
     is: "short-list",
     properties: {
-      output: {notify:true,computed: "getOutput(list, data, used, listBy)"}
+      output: {notify:true,computed: "getOutput(list, data, used, listBy)"},
       list: {notify:true,computed: "getList(_shortList)"}
     },
-    getOutput: function(shortList, data, used, listBy) {
+    getOutput: function(list, data, used, listBy) {
       if (!used || !shortList) {
         return data
       } else {
         var output = []
-        var shortListArray = shortList.split(",")
 
         for (var n = 0; n < data.length; ++n) {
-          if (shortListArray.indexOf(data[n][listBy]) !== -1) {
+          if (list.indexOf(data[n][listBy]) !== -1) {
             output.push(data[n]) 
           }
         }
