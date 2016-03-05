@@ -10,8 +10,9 @@
 <dom-module id="short-list">
   <template>
     <style>:host {display:block}</style>
-    <paper-textarea label="short list" value="{{_shortList}}" pattern="[a-zA-Z\/-]*[a-zA-Z\/\,-]*[a-zA-Z\/-]+" auto-validate  error-message="sorry a ',' separated list"></paper-textarea>
-    <iron-localstorage name="shortList" value="{{_shortList}}" ></iron-localstorage>
+    <paper-textarea label="short list" value="{{value}}" pattern="[a-zA-Z\/-]*[a-zA-Z\/\,-]*[a-zA-Z\/-]+" auto-validate  error-message="sorry a ',' separated list"></paper-textarea>
+    <iron-localstorage name="shortList" value="{{value}}" ></iron-localstorage>
+    <iron-localstorage name="shortListed" value="{{used}}" ></iron-localstorage>
     <paper-toggle-button checked="{{used}}" style="display:inline-block"></paper-toggle-button>
   </template>
 </dom-module>
@@ -20,7 +21,8 @@
     is: "short-list",
     properties: {
       output: {notify:true,computed: "getOutput(list, data, used, listBy)"},
-      list: {notify:true,computed: "getList(_shortList)"}
+      list: {computed: "getList(value)"},
+      value: {notify:true}
     },
     getOutput: function(list, data, used, listBy) {
       if (!used) {
@@ -37,7 +39,9 @@
       }
     },
     getList: function(shortList) {
-      return shortList.split(",")
+      if (shortList) {
+        return shortList.split(",")
+      }
     }
   });
 </script>
